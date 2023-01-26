@@ -15,7 +15,6 @@ namespace DemoLocation2000.Controllers
 
         public IActionResult Index()
         {
-            Console.WriteLine("Vive ASP.Net Core");
             return View();
         }
 
