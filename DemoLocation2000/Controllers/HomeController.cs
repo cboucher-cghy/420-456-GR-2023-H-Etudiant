@@ -15,6 +15,7 @@ namespace DemoLocation2000.Controllers
 
         public IActionResult Index()
         {
+            Console.WriteLine("");
             return View();
         }
 
