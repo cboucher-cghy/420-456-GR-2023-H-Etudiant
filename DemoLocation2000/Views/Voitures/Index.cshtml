@@ -2,6 +2,23 @@
 <h1>Mes voitures!</h1>
 
 <div>
+    @* NON-Fonctionnel avec /voitures/index *@
+    <img src="images/Dodge_RAM.png" />
+    <br />
+    <h1>Prise 2</h1>
+    <img src="~/images/Dodge_RAM.png" />
+    <h1>Prise 3</h1>
+    <img src="/images/Dodge_RAM.png" />
+    <h1>Prise 4</h1>
+    <img src=@Url.Content("~/images/Dodge_RAM.png") />
+    <h1>Prise 5</h1>
+    <img src=@Url.Content("/images/Dodge_RAM.png") />
+    <h1>Prise 6</h1>
+    @* NON-Fonctionnel avec /voitures/index *@
+    <img src=@Url.Content("images/Dodge_RAM.png") />
+
+</div>
+<div>
     <p>Voici les @Model.Count voitures</p>
     <ul>
         @foreach (var item in Model)
