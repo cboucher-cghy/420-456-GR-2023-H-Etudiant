@@ -14,6 +14,6 @@ namespace DemoLocation2000.Data
 
         public DbSet<Voiture> Voitures { get; set; } = default!;
 
-        public DbSet<Marque> Cegep { get; set; } = default!;
+        public DbSet<Marque> Marques { get; set; } = default!;
     }
 }
