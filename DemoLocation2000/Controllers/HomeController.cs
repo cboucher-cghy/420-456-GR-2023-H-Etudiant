@@ -12,14 +12,20 @@ namespace DemoLocation2000.Controllers
         public HomeController(ApplicationDbContext context)
         {
             _context = context;
-            var voitures = _context.Voitures.ToList();
 
-            context.Voitures.Add(new Voiture()
+        }
+
+        public IActionResult AjouterVoiture()
+        {
+            //var voitures = _context.Voitures.ToList();
+
+            _context.Voitures.Add(new Voiture()
             {
                 Nom = "Mustang",
                 Annee = 2000
             });
-            context.SaveChanges();
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Index()
