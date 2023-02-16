@@ -4,6 +4,7 @@ using DemoLocation2000.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoLocation2000.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230216175700_FixNullableMarque")]
+    partial class FixNullableMarque
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,27 +41,6 @@ namespace DemoLocation2000.Migrations
                     b.ToTable("Marques");
                 });
 
-            modelBuilder.Entity("DemoLocation2000.Models.Proprietaire", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Nom")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Prenom")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Proprietaires");
-                });
-
             modelBuilder.Entity("DemoLocation2000.Models.Voiture", b =>
                 {
                     b.Property<int>("Id")
@@ -78,34 +59,20 @@ namespace DemoLocation2000.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProprietaireId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("MarqueId");
-
-                    b.HasIndex("ProprietaireId");
 
                     b.ToTable("Voitures");
                 });
 
             modelBuilder.Entity("DemoLocation2000.Models.Voiture", b =>
                 {
-                    b.HasOne("DemoLocation2000.Models.Marque", "MarqueVoiture")
+                    b.HasOne("DemoLocation2000.Models.Marque", "Marque")
                         .WithMany()
                         .HasForeignKey("MarqueId");
 
-                    b.HasOne("DemoLocation2000.Models.Proprietaire", null)
-                        .WithMany("Autos")
-                        .HasForeignKey("ProprietaireId");
-
-                    b.Navigation("MarqueVoiture");
-                });
-
-            modelBuilder.Entity("DemoLocation2000.Models.Proprietaire", b =>
-                {
-                    b.Navigation("Autos");
+                    b.Navigation("Marque");
                 });
 #pragma warning restore 612, 618
         }

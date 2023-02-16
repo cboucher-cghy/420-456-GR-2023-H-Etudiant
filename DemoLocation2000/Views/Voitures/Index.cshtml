@@ -3,16 +3,26 @@
 
 <div>
     @* NON-Fonctionnel avec /voitures/index *@
+    <h1>Prise 1</h1>
     <img src="images/Dodge_RAM.png" />
     <br />
+
+    @* =) Fonctionnel avec /voitures/index lorsque déployé sur SQLInfoCG =)*@
     <h1>Prise 2</h1>
     <img src="~/images/Dodge_RAM.png" />
+    
+    @* NON-Fonctionnel avec /voitures/index lorsque déployé sur SQLInfoCG*@
     <h1>Prise 3</h1>
     <img src="/images/Dodge_RAM.png" />
+    
+    @* =) Fonctionnel avec /voitures/index lorsque déployé sur SQLInfoCG =)*@
     <h1>Prise 4</h1>
     <img src=@Url.Content("~/images/Dodge_RAM.png") />
+    
+    @* NON-Fonctionnel avec /voitures/index lorsque déployé sur SQLInfoCG*@
     <h1>Prise 5</h1>
     <img src=@Url.Content("/images/Dodge_RAM.png") />
+    
     <h1>Prise 6</h1>
     @* NON-Fonctionnel avec /voitures/index *@
     <img src=@Url.Content("images/Dodge_RAM.png") />
