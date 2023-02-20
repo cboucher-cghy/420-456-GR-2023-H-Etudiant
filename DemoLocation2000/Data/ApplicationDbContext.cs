@@ -15,6 +15,7 @@ namespace DemoLocation2000.Data
         public DbSet<Voiture> Voitures { get; set; } = default!;
 
         public DbSet<Marque> Marques { get; set; } = default!;
+        public DbSet<Modele> Modeles { get; set; } = default!;
 
         public DbSet<Proprietaire> Proprietaires { get; set; } = default!;
     }
