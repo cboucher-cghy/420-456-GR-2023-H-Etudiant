@@ -1,4 +1,5 @@
-﻿using DemoLocation2000.Models;
+﻿using DemoLocation2000.Data.Configuration;
+using DemoLocation2000.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DemoLocation2000.Data
@@ -10,6 +11,13 @@ namespace DemoLocation2000.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new ModeleConfiguration());
+
+            //modelBuilder.Entity<Modele>().HasData(new Modele()
+            //{
+            //    Id = 2,
+            //    Nom = "Focus"
+            //});
         }
 
         public DbSet<Voiture> Voitures { get; set; } = default!;
