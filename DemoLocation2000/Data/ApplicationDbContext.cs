@@ -1,6 +1,7 @@
 ﻿using DemoLocation2000.Data.Configuration;
 using DemoLocation2000.Models;
 using Microsoft.EntityFrameworkCore;
+using DemoLocation2000.ViewModels;
 
 namespace DemoLocation2000.Data
 {
@@ -26,5 +27,7 @@ namespace DemoLocation2000.Data
         public DbSet<Modele> Modeles { get; set; } = default!;
 
         public DbSet<Proprietaire> Proprietaires { get; set; } = default!;
+
+        public DbSet<DemoLocation2000.ViewModels.MarqueIndexVM> MarqueIndexVM { get; set; }
     }
 }
