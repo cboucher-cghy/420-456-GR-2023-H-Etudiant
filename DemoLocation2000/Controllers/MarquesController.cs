@@ -1,4 +1,5 @@
-﻿using DemoLocation2000.Data;
+﻿using AutoMapper;
+using DemoLocation2000.Data;
 using DemoLocation2000.Models;
 using DemoLocation2000.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -8,11 +9,14 @@ namespace DemoLocation2000.Controllers
 {
     public class MarquesController : Controller
     {
-        private readonly ApplicationDbContext _context;
 
-        public MarquesController(ApplicationDbContext context)
+        private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
+
+        public MarquesController(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: Marques
@@ -69,14 +73,16 @@ namespace DemoLocation2000.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nom")] MarqueCreateVM vm)
+        public async Task<IActionResult> Create(MarqueCreateVM vm)
         {
             if (ModelState.IsValid)
             {
-                var marque = new Marque()
-                {
-                    Nom = vm.Nom,
-                };
+                //var marque = new Marque()
+                //{
+                //    Nom = vm.Nom,
+                //};
+                var marque = _mapper.Map<Marque>(vm);
+
 
                 _context.Add(marque);
                 await _context.SaveChangesAsync();

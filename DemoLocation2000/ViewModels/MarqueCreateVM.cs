@@ -6,6 +6,6 @@ namespace DemoLocation2000.ViewModels
     {
         [MinLength(2)]
         [Required(ErrorMessage = "Ce champ doit être rempli!")]
-        public string Nom { get; set; } = default!;
+        public string NomMarque { get; set; } = default!;
     }
 }
